@@ -8,9 +8,6 @@
 
   <ItemGroup>
     <Folder Include="AutoMapper\" />
-    <Folder Include="CQRS\Categories\Handlers\QueryHandlers\" />
-    <Folder Include="CQRS\Categories\Queries\Responses\" />
-    <Folder Include="CQRS\Categories\Queries\Requests\" />
   </ItemGroup>
 
   <ItemGroup>

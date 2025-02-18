@@ -1,5 +1,6 @@
 ﻿using Application.CQRS.Categories.Commands.Requests;
 using Application.CQRS.Categories.Commands.Responses;
+using Common.Exceptions;
 using Common.GlobalResponses;
 using Common.GlobalResponses.Generics;
 using Domain.Entities;
@@ -21,12 +22,14 @@ public class CreateCategoryHandler(IUnitOfWork unitOfWork) : IRequestHandler<Cre
 
         if (string.IsNullOrWhiteSpace(request.Name))
         {
-            return new Result<CreateCategoryResponse>
-            {
-                Data = null,
-                Errors = ["Category Name bos olmamalidir"],
-                IsSuccess = false
-            };
+            //return new Result<CreateCategoryResponse>
+            //{
+            //    Data = null,
+            //    Errors = ["Category Name bos olmamalidir"],
+            //    IsSuccess = false
+            //};
+
+            throw new BadRequestException("Name null olmamalidir");
         }
 
         await _unitOfWork.CategoryRepository.AddAsync(category);

@@ -1,4 +1,5 @@
 ﻿using Application.CQRS.Categories.Commands.Requests;
+using Application.CQRS.Categories.Queries.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,13 @@ public class CategoryController(ISender sender) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateCategoryRequest request)
     {
+        return Ok(await _sender.Send(request));
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var request = new GetByIdCategoryRequest() { Id = id };
         return Ok(await _sender.Send(request));
     }
 }
