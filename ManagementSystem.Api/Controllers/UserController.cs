@@ -24,4 +24,10 @@ public class UserController(ISender sender) : Controller
     {
         return Ok(await _sender.Send(request));
     }
+
+    [HttpPost]
+    public async Task<IActionResult> RegisterAsync([FromBody] Register.Command request)
+    {
+        return Ok(await _sender.Send(request));
+    }
 }

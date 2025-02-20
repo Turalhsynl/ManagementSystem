@@ -12,6 +12,7 @@ public class SqlUserRepository(AppDbContext context) : IUserRepository
     public async Task RegisterAsync(User user)
     {
         await _context.Users.AddAsync(user);
+        await _context.SaveChangesAsync();
     }
 
     public void Update(User user)
